@@ -9,6 +9,7 @@ public class TelaDeLogin extends JFrame {
     private JTextField campoUsuario;
     private JPasswordField campoSenha;
     private List<Cliente> clientesCadastrados;
+    private List<Colaborador> colaboradoresCadastrados;
 
     public TelaDeLogin() {
         super("Tela de Login");
@@ -20,6 +21,11 @@ public class TelaDeLogin extends JFrame {
         clientesCadastrados = new ArrayList<>();
         clientesCadastrados.add(new Cliente("0001/2023", "senha123"));
         clientesCadastrados.add(new Cliente("0002/2023", "abc123"));
+
+        // Simulando cadastro de alguns colaboradores
+        colaboradoresCadastrados = new ArrayList<>();
+        colaboradoresCadastrados.add(new Colaborador("0009/2023", "2023001"));
+        colaboradoresCadastrados.add(new Colaborador("0010/2023", "2023002"));
 
         JPanel painel = new JPanel();
         painel.setLayout(new GridLayout(3, 2));
@@ -55,6 +61,14 @@ public class TelaDeLogin extends JFrame {
         boolean autenticado = false;
         for (Cliente cliente : clientesCadastrados) {
             if (cliente.getChaveDeAcesso().equals(senha) && cliente.getNumeroProcesso().equals(usuario)) {
+                autenticado = true;
+                JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo!");
+                break;
+            }
+        }
+        // Verifica se as credenciais pertencem a algum colaborador cadastrado
+        for (Colaborador colaborador : colaboradoresCadastrados) {
+            if (colaborador.getSenha().equals(senha) && colaborador.getUsuario().equals(usuario)) {
                 autenticado = true;
                 JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo!");
                 break;
