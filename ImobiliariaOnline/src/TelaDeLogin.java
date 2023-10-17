@@ -99,12 +99,56 @@ public class TelaDeLogin extends JFrame {
 
         add(headerPanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
+
+    //Validação de Senha
+    botaoLogin.addActionListener(new ActionListener() {
+
+        public void actionPerformed(ActionEvent e) {
+            String usuario = campoUsuario.getText();
+            String senha = new String(campoSenha.getPassword());
+
+            if (clienteRadio.isSelected()) {
+                // Verificar a senha para o cliente
+                if (validarSenhaCliente(usuario, senha)) {
+                    // Senha correta, ação de login bem-sucedida para o cliente
+                    JOptionPane.showMessageDialog(TelaDeLogin.this, "Login bem-sucedido como cliente!");
+                } else {
+                    // Senha incorreta, exibir mensagem de erro
+                    JOptionPane.showMessageDialog(TelaDeLogin.this, "Falha no login. Verifique suas credenciais.");
+                }
+            } else if (colaboradorRadio.isSelected()) {
+                // Verificar a senha para o colaborador
+                if (validarSenhaColaborador(usuario, senha)) {
+                    // Senha correta, ação de login bem-sucedida para o colaborador
+                    JOptionPane.showMessageDialog(TelaDeLogin.this, "Login bem-sucedido como colaborador!");
+                } else {
+                    // Senha incorreta, exibir mensagem de erro
+                    JOptionPane.showMessageDialog(TelaDeLogin.this, "Falha no login. Verifique suas credenciais.");
+                }
+            } else {
+                // Nenhum tipo de usuário selecionado, exibir mensagem de erro
+                JOptionPane.showMessageDialog(TelaDeLogin.this, "Selecione o tipo de usuário (cliente ou colaborador).");
+            }
+        }
+    });
+}
+
+    private boolean validarSenhaCliente(String usuario, String senha) {
+        // Lógica de validação de senha para o cliente
+        // Substitua esta lógica pela sua validação real
+        if (usuario.equals("cliente") && senha.equals("senha_cliente")) {
+            return true;
+        }
+        return false;
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            TelaDeLogin telaLogin = new TelaDeLogin();
-            telaLogin.setVisible(true);
-        });
+    private boolean validarSenhaColaborador(String usuario, String senha) {
+        // Lógica de validação de senha para o colaborador
+        // Substitua esta lógica pela sua validação real
+        if (usuario.equals("colaborador") && senha.equals("senha_colaborador")) {
+            return true;
+        }
+        return false;
     }
+
 }

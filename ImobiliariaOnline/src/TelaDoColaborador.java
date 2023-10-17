@@ -7,8 +7,7 @@ import javax.swing.JButton;
 import java.awt.GridLayout;
 
 public class TelaDoColaborador extends JFrame {
-    private Etapas etapas;
-    private JLabel etapaLabel;
+
     private JButton avancarButton;
     private JButton retrocederButton;
     private JButton adicionarEtapaButton;

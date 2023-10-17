@@ -1,9 +1,13 @@
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Etapas {
     private Map<String, String> etapas;
     private String etapaAtual;
+
+    private JLabel etapaLabel;
+
 
     public Etapas() {
         etapas = new HashMap<>();
@@ -22,6 +26,12 @@ public class Etapas {
 
         etapaAtual = "Assinatura do Contrato de Promessa de Compra e Venda"; // Começa na primeira etapa
     }
+
+    public Map<String, String> getEtapas() {
+        return etapas;
+    }
+
+
     public void criarNovaEtapa(String nomeEtapa, String descricaoEtapa) {
         etapas.put(nomeEtapa, descricaoEtapa);
     }

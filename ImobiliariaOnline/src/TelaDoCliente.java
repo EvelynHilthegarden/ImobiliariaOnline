@@ -6,28 +6,16 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class TelaDoCliente extends JFrame {
-        private JButton b1 = new JButton("Assinatura do contrato");
-        private JButton b2 = new JButton("Pagamento de taxa da Engenharia");
-        private JButton b3 = new JButton("Vistoria do Engenheiro");
-        private JButton b4 = new JButton("Laudo de Avaliação");
-        private JButton b5 = new JButton("Débito do FGTS");
-        private JButton b6 = new JButton("Conformidade");
-        private JButton b7 = new JButton("Entrega de Chaves");
-        private JButton b8 = new JButton("Liberação de Recursos aos Vendedores");
-        private JButton b9 = new JButton("Registro do Contrato de Financiamento");
-        private JButton b10 = new JButton("Taxa de Registro");
-        private JButton b11 = new JButton("Taxa de ITBI");
-        private JButton b12 = new JButton("Entrega de Chaves");
+        //private JButton b1 =
         private int headerHeight = 60;
 
         public TelaDoCliente() {
-            setTitle("Processo de Compra de Imóvel");
+            setTitle("Processo de Compra do seu Imóvel");
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setLocationRelativeTo(null);
 
 
             JPanel headerPanel = new JPanel() {
-                @Override
                 protected void paintComponent(Graphics g) {
                     super.paintComponent(g);
                     g.setColor(Color.decode("#FF8210"));
@@ -47,18 +35,7 @@ public class TelaDoCliente extends JFrame {
             JPanel buttonPanel = new JPanel(new GridLayout(2, 6, 10, 10));
 
 
-            buttonPanel.add(b1);
-            buttonPanel.add(b2);
-            buttonPanel.add(b3);
-            buttonPanel.add(b4);
-            buttonPanel.add(b5);
-            buttonPanel.add(b6);
-            buttonPanel.add(b12);
-            buttonPanel.add(b11);
-            buttonPanel.add(b10);
-            buttonPanel.add(b9);
-            buttonPanel.add(b8);
-            buttonPanel.add(b7);
+
 
 
             for (Component button : buttonPanel.getComponents()) {
@@ -98,13 +75,9 @@ public class TelaDoCliente extends JFrame {
 
             add(contentPanel);
 
-            pack(); // Ajusta automaticamente o tamanho da janela (fé em deus, mão na bíblia)
+            pack();
             setVisible(true);
         }
 
-        public static void main(String[] args) {
-            SwingUtilities.invokeLater(() -> {
-                new TelaDoCliente();
-            });
-        }
+
     }
