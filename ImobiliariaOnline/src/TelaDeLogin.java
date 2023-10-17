@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.even.ActionEvent;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List; // Importe a classe List correta
@@ -36,11 +36,11 @@ public class TelaDeLogin extends JFrame {
         campoSenha = new JPasswordField();
 
         JButton botaoLogin = new JButton("Login");
-        botaoLogin.addActionListener(new ActionListener() {
+        botaoLogin.addActionListener(new ActionListener() ){
             public void actionPerformed(ActionEvent e) {
                 realizarLogin();
             }
-        });
+        };
 
         painel.add(labelUsuario);
         painel.add(campoUsuario);
