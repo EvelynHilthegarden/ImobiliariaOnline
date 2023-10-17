@@ -1,10 +1,9 @@
 import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new TelaDeLogin();
-            }
+        SwingUtilities.invokeLater(() -> {
+            TelaDeLogin telaLogin = new TelaDeLogin();
+            telaLogin.setVisible(true);
         });
     }
 }

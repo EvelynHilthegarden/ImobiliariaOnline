@@ -103,7 +103,7 @@ public class TelaDeLogin extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            TelaLogin telaLogin = new TelaLogin();
+            TelaDeLogin telaLogin = new TelaDeLogin();
             telaLogin.setVisible(true);
         });
     }

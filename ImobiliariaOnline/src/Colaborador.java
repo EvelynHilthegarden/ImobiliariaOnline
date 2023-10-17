@@ -4,11 +4,10 @@ public class Colaborador extends Login {
     private List<Colaborador> colaboradoresCadastrados;
     private List<Cliente> clientesCadastrados;
 
+
     public Colaborador(String acessoAdm, String chaveDeAcessoColaborador) {
         super(acessoAdm, chaveDeAcessoColaborador);
-    }
 
-    public Colaborador() {
         colaboradoresCadastrados = new ArrayList<>();
 
         // Adicionando colaboradores à lista
