@@ -43,7 +43,7 @@ public class TelaDoCliente extends JFrame {
             JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
             titlePanel.add(titleLabel);
 
-            //Isso aqui é pra ajustar a fileira dos botões
+            //Ajuste da fileira dos botões
             JPanel buttonPanel = new JPanel(new GridLayout(2, 6, 10, 10));
 
 
@@ -71,7 +71,7 @@ public class TelaDoCliente extends JFrame {
                 }
             }
 
-            //Com fé em Deus essa porra vai dar um espaço pra centralizar o layout no meio
+            //Espaço para centralizar o layout no meio
             JPanel topSpacePanel = new JPanel();
             topSpacePanel.setPreferredSize(new Dimension(10, 30)); // Espaço de 30 pixels na parte superior
 
@@ -87,7 +87,7 @@ public class TelaDoCliente extends JFrame {
             contentPanel.add(buttonPanel);
             contentPanel.add(bottomSpacePanel);
 
-            //isso aqui coisa o tamanho da faixa laranja no topo da tela
+            //Faixa laranja no topo da tela
             this.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
