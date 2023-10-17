@@ -19,6 +19,7 @@ public class Colaborador extends Login {
         clientesCadastrados = new ArrayList<>();
 
         // Simulando alguns clientes cadastrados
+        // Foram apenas testes, entretando o intuito seria vincular o cliente ao processo
         clientesCadastrados.add(new Cliente("0001/2023", "senha123"));
         clientesCadastrados.add(new Cliente("0002/2023", "abc123"));
     }

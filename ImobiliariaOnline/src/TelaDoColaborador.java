@@ -20,7 +20,7 @@ public class TelaDoColaborador extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        etapas = new Etapas(); // Crie uma instância da classe Etapas
+        etapas = new Etapas();
 
         JPanel headerPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
@@ -39,8 +39,7 @@ public class TelaDoColaborador extends JFrame {
 
         JPanel buttonPanel = new JPanel(new GridLayout(2, etapas.getNumeroDeEtapas() / 2, 10, 10));
 
-        // Use LinkedHashMap para manter a ordem de inserção
-        Map<String, String> etapasMap = new LinkedHashMap<>(etapas.getEtapas());
+        LinkedHashMap<String, String> etapasMap = new LinkedHashMap<>(etapas.getEtapas());
 
         for (Map.Entry<String, String> entry : etapasMap.entrySet()) {
             JButton btn = new JButton(entry.getKey()); // Usar o nome da chave como texto do botão

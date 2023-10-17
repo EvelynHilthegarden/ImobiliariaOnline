@@ -4,8 +4,7 @@ class ColaboradorLogin extends Login {
     }
     public boolean validarSenha() {
         // Lógica de validação de senha para o cliente
-        // Substitua esta lógica pela sua validação real
-        if (this.getUsuario().equals("colaborador") && this.getSenha().equals("colaborador_senha")) {
+        if (this.getUsuario().equals("colaborador") && this.getSenha().equals("senha123")) {
             return true;
         }
         return false;
