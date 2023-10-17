@@ -9,7 +9,6 @@ public class TelaDeLogin extends JFrame {
     private JTextField campoUsuario;
     private JPasswordField campoSenha;
     private List<Cliente> clientesCadastrados;
-    private List<Colaborador> colaboradoresCadastrados;
 
     public TelaDeLogin() {
         super("Tela de Login");
@@ -17,15 +16,8 @@ public class TelaDeLogin extends JFrame {
         setSize(300, 150);
         setLocationRelativeTo(null);
 
-        // Simulando alguns clientes cadastrados
-        clientesCadastrados = new ArrayList<>();
-        clientesCadastrados.add(new Cliente("0001/2023", "senha123"));
-        clientesCadastrados.add(new Cliente("0002/2023", "abc123"));
 
-        // Simulando cadastro de alguns colaboradores
-        colaboradoresCadastrados = new ArrayList<>();
-        colaboradoresCadastrados.add(new Colaborador("0001/2023", "2023001"));
-        colaboradoresCadastrados.add(new Colaborador("0002/2023", "2023002"));
+
 
         JPanel painel = new JPanel();
         painel.setLayout(new GridLayout(3, 2));
