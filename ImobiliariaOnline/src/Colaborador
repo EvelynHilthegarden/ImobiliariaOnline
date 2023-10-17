@@ -1,5 +1,5 @@
 public class Colaborador extends Login{
-    public Colaborador(String numeroProcesso, String chaveDeAcessoColaborador){
-        super(numeroProcesso, chaveDeAcessoColaborador);
+    public Colaborador(String IDColaborador, String chaveDeAcessoColaborador){
+        super(IDColaborador, chaveDeAcessoColaborador);
     }
 }
