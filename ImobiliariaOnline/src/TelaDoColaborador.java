@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class TelaDoColaborador extends JFrame {
 
@@ -35,21 +37,23 @@ public class TelaDoColaborador extends JFrame {
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         titlePanel.add(titleLabel);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 6, 10, 10));
+        JPanel buttonPanel = new JPanel(new GridLayout(2, etapas.getNumeroDeEtapas() / 2, 10, 10));
 
-        for (int i = 0; i < etapas.getNumeroDeEtapas(); i++) {
-            JButton btn = new JButton("Etapa " + (i + 1));
+        // Use LinkedHashMap para manter a ordem de inserção
+        Map<String, String> etapasMap = new LinkedHashMap<>(etapas.getEtapas());
+
+        for (Map.Entry<String, String> entry : etapasMap.entrySet()) {
+            JButton btn = new JButton(entry.getKey()); // Usar o nome da chave como texto do botão
             btn.setPreferredSize(new Dimension(140, 140));
             btn.setBackground(Color.decode("#5271FF"));
             btn.setForeground(Color.WHITE);
             btn.setFont(btn.getFont().deriveFont(Font.BOLD));
-            int finalI = i;
             btn.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     // Atualize a etapa atual para a etapa selecionada
-                    etapas.setEtapaAtual("Etapa" + (finalI + 1));
+                    etapas.setEtapaAtual(entry.getKey()); // Usar o nome da chave selecionada
                     // Atualize a descrição da etapa atual
-                    descricaoEtapaLabel.setText(etapas.getEtapaAtual());
+                    descricaoEtapaLabel.setText(entry.getValue());
                 }
             });
             buttonPanel.add(btn);
@@ -81,7 +85,7 @@ public class TelaDoColaborador extends JFrame {
         this.addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent e) {
                 headerPanel.setPreferredSize(new Dimension(getWidth(), headerHeight));
-                headerPanel.revalidate();
+                contentPanel.revalidate(); // Atualize o layout
             }
         });
 
