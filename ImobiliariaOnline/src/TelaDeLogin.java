@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.even.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List; // Importe a classe List correta
@@ -60,7 +60,7 @@ public class TelaDeLogin extends JFrame {
         // Verificar se as credenciais correspondem a um cliente cadastrado
         boolean autenticado = false;
         for (Cliente cliente : clientesCadastrados) {
-            if (cliente.getChaveDeAcesso().equals(senha) && cliente.getNumeroProcesso().equals(usuario)) {
+            if (cliente.getSenha().equals(senha) && cliente.getUsuario().equals(usuario)) {
                 autenticado = true;
                 JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo!");
                 break;
