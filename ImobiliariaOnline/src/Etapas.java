@@ -32,15 +32,21 @@ public class Etapas {
     }
 
 
+
     public void criarNovaEtapa(String nomeEtapa, String descricaoEtapa) {
         etapas.put(nomeEtapa, descricaoEtapa);
     }
-    public void adicionarEtapaAoProcesso(){
 
+    public void adicionarEtapaAoProcesso(String nomeEtapa, String descricaoEtapa) {
+        criarNovaEtapa(nomeEtapa, descricaoEtapa);
     }
 
     public String getEtapaAtual() {
-        return etapas.get(etapaAtual);
+        return etapaAtual;
+    }
+
+    public void setEtapaAtual(String etapaAtual) {
+        this.etapaAtual = etapaAtual;
     }
 
     public boolean avancarEtapa() {
