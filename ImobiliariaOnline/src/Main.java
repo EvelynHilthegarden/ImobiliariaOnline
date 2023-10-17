@@ -4,10 +4,6 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             TelaDeLogin telaLogin = new TelaDeLogin();
             telaLogin.setVisible(true);
-
-            SwingUtilities.invokeLater(() -> {
-                new TelaDoColaborador();
-            });
         });
     }
 }

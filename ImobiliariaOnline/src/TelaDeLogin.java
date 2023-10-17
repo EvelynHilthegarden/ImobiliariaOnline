@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaDeLogin extends JFrame {
     private JRadioButton clienteRadio;
@@ -23,7 +24,6 @@ public class TelaDeLogin extends JFrame {
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
-
 
         JLabel labelTitulo = new JLabel("Imobiliária Online");
         labelTitulo.setFont(new Font("Arial", Font.BOLD, 40));
@@ -100,55 +100,45 @@ public class TelaDeLogin extends JFrame {
         add(headerPanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
 
-    //Validação de Senha
-    botaoLogin.addActionListener(new ActionListener() {
+        // Validação de Senha
+        botaoLogin.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String usuario = campoUsuario.getText();
+                String senha = new String(campoSenha.getPassword());
 
-        public void actionPerformed(ActionEvent e) {
-            String usuario = campoUsuario.getText();
-            String senha = new String(campoSenha.getPassword());
-
-            if (clienteRadio.isSelected()) {
-                // Verificar a senha para o cliente
-                if (validarSenhaCliente(usuario, senha)) {
-                    // Senha correta, ação de login bem-sucedida para o cliente
-                    JOptionPane.showMessageDialog(TelaDeLogin.this, "Login bem-sucedido como cliente!");
+                if (clienteRadio.isSelected()) {
+                    ClienteLogin clienteLogin = new ClienteLogin(usuario, senha);
+                    if (clienteLogin.validarSenha()) {
+                        JOptionPane.showMessageDialog(TelaDeLogin.this, "Login bem-sucedido como cliente!");
+                        abrirTelaDoCliente();
+                    } else {
+                        JOptionPane.showMessageDialog(TelaDeLogin.this, "Falha no login. Verifique suas credenciais.");
+                    }
+                } else if (colaboradorRadio.isSelected()) {
+                    ColaboradorLogin colaboradorLogin = new ColaboradorLogin(usuario, senha);
+                    if (colaboradorLogin.validarSenha()) {
+                        JOptionPane.showMessageDialog(TelaDeLogin.this, "Login bem-sucedido como colaborador!");
+                        abrirTelaDoColaborador();
+                    } else {
+                        JOptionPane.showMessageDialog(TelaDeLogin.this, "Falha no login. Verifique suas credenciais.");
+                    }
                 } else {
-                    // Senha incorreta, exibir mensagem de erro
-                    JOptionPane.showMessageDialog(TelaDeLogin.this, "Falha no login. Verifique suas credenciais.");
+                    JOptionPane.showMessageDialog(TelaDeLogin.this, "Selecione o tipo de usuário (cliente ou colaborador).");
                 }
-            } else if (colaboradorRadio.isSelected()) {
-                // Verificar a senha para o colaborador
-                if (validarSenhaColaborador(usuario, senha)) {
-                    // Senha correta, ação de login bem-sucedida para o colaborador
-                    JOptionPane.showMessageDialog(TelaDeLogin.this, "Login bem-sucedido como colaborador!");
-                } else {
-                    // Senha incorreta, exibir mensagem de erro
-                    JOptionPane.showMessageDialog(TelaDeLogin.this, "Falha no login. Verifique suas credenciais.");
-                }
-            } else {
-                // Nenhum tipo de usuário selecionado, exibir mensagem de erro
-                JOptionPane.showMessageDialog(TelaDeLogin.this, "Selecione o tipo de usuário (cliente ou colaborador).");
             }
-        }
-    });
-}
-
-    private boolean validarSenhaCliente(String usuario, String senha) {
-        // Lógica de validação de senha para o cliente
-        // Substitua esta lógica pela sua validação real
-        if (usuario.equals("cliente") && senha.equals("senha_cliente")) {
-            return true;
-        }
-        return false;
+        });
     }
 
-    private boolean validarSenhaColaborador(String usuario, String senha) {
-        // Lógica de validação de senha para o colaborador
-        // Substitua esta lógica pela sua validação real
-        if (usuario.equals("colaborador") && senha.equals("senha_colaborador")) {
-            return true;
-        }
-        return false;
+    // Abrir novas telas
+    private void abrirTelaDoColaborador() {
+        TelaDoColaborador telaColaborador = new TelaDoColaborador();
+        telaColaborador.setVisible(true);
+        this.setVisible(false); // Oculta a tela de login após o login bem-sucedido
     }
 
+    private void abrirTelaDoCliente() {
+        TelaDoCliente telaCliente = new TelaDoCliente();
+        telaCliente.setVisible(true);
+        this.setVisible(false); // Oculta a tela de login após o login bem-sucedido
+    }
 }

@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class TelaDoCliente extends JFrame {
-        //private JButton b1 =
+
         private int headerHeight = 60;
 
         public TelaDoCliente() {
@@ -78,6 +78,4 @@ public class TelaDoCliente extends JFrame {
             pack();
             setVisible(true);
         }
-
-
-    }
+}
