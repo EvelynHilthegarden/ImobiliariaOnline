@@ -24,8 +24,8 @@ public class TelaDeLogin extends JFrame {
 
         // Simulando cadastro de alguns colaboradores
         colaboradoresCadastrados = new ArrayList<>();
-        colaboradoresCadastrados.add(new Colaborador("0009/2023", "2023001"));
-        colaboradoresCadastrados.add(new Colaborador("0010/2023", "2023002"));
+        colaboradoresCadastrados.add(new Colaborador("0001/2023", "2023001"));
+        colaboradoresCadastrados.add(new Colaborador("0002/2023", "2023002"));
 
         JPanel painel = new JPanel();
         painel.setLayout(new GridLayout(3, 2));
@@ -36,11 +36,12 @@ public class TelaDeLogin extends JFrame {
         campoSenha = new JPasswordField();
 
         JButton botaoLogin = new JButton("Login");
-        botaoLogin.addActionListener(new ActionListener() ){
+        botaoLogin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 realizarLogin();
             }
-        };
+        });
+
 
         painel.add(labelUsuario);
         painel.add(campoUsuario);
