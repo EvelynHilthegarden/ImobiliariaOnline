@@ -18,7 +18,6 @@ public class TelaDeLogin extends JFrame {
 
 
 
-
         JPanel painel = new JPanel();
         painel.setLayout(new GridLayout(3, 2));
 
@@ -55,7 +54,7 @@ public class TelaDeLogin extends JFrame {
         for (Cliente cliente : clientesCadastrados) {
             if (cliente.getSenha().equals(senha) && cliente.getUsuario().equals(usuario)) {
                 autenticado = true;
-                JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo!");
+                JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo, cliente!");
                 break;
             }
         }
@@ -63,7 +62,7 @@ public class TelaDeLogin extends JFrame {
         for (Colaborador colaborador : colaboradoresCadastrados) {
             if (colaborador.getSenha().equals(senha) && colaborador.getUsuario().equals(usuario)) {
                 autenticado = true;
-                JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo!");
+                JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo, colaborador!");
                 break;
             }
         }
