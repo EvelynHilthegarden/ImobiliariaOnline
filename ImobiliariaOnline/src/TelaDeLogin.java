@@ -24,8 +24,8 @@ public class TelaDeLogin extends JFrame {
 
         // Simulando cadastro de alguns colaboradores
         colaboradoresCadastrados = new ArrayList<>();
-        colaboradoresCadastrados.add(new Colaborador("0009/2023", "2023001"));
-        colaboradoresCadastrados.add(new Colaborador("0010/2023", "2023002"));
+        colaboradoresCadastrados.add(new Colaborador("123", "2023001"));
+        colaboradoresCadastrados.add(new Colaborador("123", "2023002"));
 
         JPanel painel = new JPanel();
         painel.setLayout(new GridLayout(3, 2));
@@ -62,7 +62,7 @@ public class TelaDeLogin extends JFrame {
         for (Cliente cliente : clientesCadastrados) {
             if (cliente.getChaveDeAcesso().equals(senha) && cliente.getNumeroProcesso().equals(usuario)) {
                 autenticado = true;
-                JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo!");
+                JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo, cliente!");
                 break;
             }
         }
@@ -70,7 +70,7 @@ public class TelaDeLogin extends JFrame {
         for (Colaborador colaborador : colaboradoresCadastrados) {
             if (colaborador.getSenha().equals(senha) && colaborador.getUsuario().equals(usuario)) {
                 autenticado = true;
-                JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo!");
+                JOptionPane.showMessageDialog(this, "Login bem-sucedido! Bem-vindo, colaborador!");
                 break;
             }
         }
