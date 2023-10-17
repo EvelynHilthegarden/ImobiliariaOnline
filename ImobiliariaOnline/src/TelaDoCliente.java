@@ -89,7 +89,6 @@ public class TelaDoCliente extends JFrame {
 
             //Faixa laranja no topo da tela
             this.addComponentListener(new ComponentAdapter() {
-                @Override
                 public void componentResized(ComponentEvent e) {
                     headerPanel.setPreferredSize(new Dimension(getWidth(), headerHeight));
                     headerPanel.revalidate();

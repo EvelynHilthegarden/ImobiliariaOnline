@@ -22,6 +22,12 @@ public class Etapas {
 
         etapaAtual = "Assinatura do Contrato de Promessa de Compra e Venda"; // Começa na primeira etapa
     }
+    public void criarNovaEtapa(String nomeEtapa, String descricaoEtapa) {
+        etapas.put(nomeEtapa, descricaoEtapa);
+    }
+    public void adicionarEtapaAoProcesso(){
+
+    }
 
     public String getEtapaAtual() {
         return etapas.get(etapaAtual);
@@ -50,7 +56,5 @@ public class Etapas {
     public int getNumeroDeEtapas() {
         return etapas.size();
     }
-    public void criarNovaEtapa(String nomeEtapa, String descricaoEtapa) {
-        etapas.put(nomeEtapa, descricaoEtapa);
-    }
+
 }
