@@ -1,1 +1,1 @@
-Repositório do Projeto Final de Programação Orientada a Objetos.
+Repositório do projeto final de Programação Orientada a Objetos.
