@@ -1,112 +1,96 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import java.awt.GridLayout;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class TelaDoColaborador extends JFrame {
-        private JButton b1 = new JButton("Assinatura do contrato");
-        private JButton b2 = new JButton("Pagamento de taxa da Engenharia");
-        private JButton b3 = new JButton("Vistoria do Engenheiro");
-        private JButton b4 = new JButton("Laudo de Avaliação");
-        private JButton b5 = new JButton("Débito do FGTS");
-        private JButton b6 = new JButton("Conformidade");
-        private JButton b7 = new JButton("Entrega de Chaves");
-        private JButton b8 = new JButton("Liberação de Recursos aos Vendedores");
-        private JButton b9 = new JButton("Registro do Contrato de Financiamento");
-        private JButton b10 = new JButton("Taxa de Registro");
-        private JButton b11 = new JButton("Taxa de ITBI");
-        private JButton b12 = new JButton("Entrega de Chaves");
-        private int headerHeight = 60;
 
-        public TelaDoColaborador() {
-            setTitle("Gestão do Processo de Compra de Imóveis");
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
-            setLocationRelativeTo(null);
+    private Etapas etapas; // Instância da classe Etapas
+    private JList<String> listaEtapas; // Lista de etapas
+    private JLabel descricaoEtapaLabel; // Descrição da etapa atual
 
+    private int headerHeight = 60;
 
-            JPanel headerPanel = new JPanel() {
-                @Override
-                protected void paintComponent(Graphics g) {
-                    super.paintComponent(g);
-                    g.setColor(Color.decode("#FF8210"));
-                    g.fillRect(0, 0, getWidth(), headerHeight);
-                }
-            };
-            headerPanel.setPreferredSize(new Dimension(getWidth(), headerHeight));
+    public TelaDoColaborador() {
+        setTitle("Gestão do Processo de Compra de Imóveis");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
+        etapas = new Etapas();
 
-            JLabel titleLabel = new JLabel("0001 - Ecoville Park");
-            titleLabel.setFont(new Font("Arial", Font.BOLD, 30));
-            titleLabel.setForeground(Color.BLACK); // Cor preta
-            JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-            titlePanel.add(titleLabel);
-
-            //Ajuste da fileira dos botões
-            JPanel buttonPanel = new JPanel(new GridLayout(2, 6, 10, 10));
-
-
-            buttonPanel.add(b1);
-            buttonPanel.add(b2);
-            buttonPanel.add(b3);
-            buttonPanel.add(b4);
-            buttonPanel.add(b5);
-            buttonPanel.add(b6);
-            buttonPanel.add(b12);
-            buttonPanel.add(b11);
-            buttonPanel.add(b10);
-            buttonPanel.add(b9);
-            buttonPanel.add(b8);
-            buttonPanel.add(b7);
-
-
-            for (Component button : buttonPanel.getComponents()) {
-                if (button instanceof JButton) {
-                    JButton btn = (JButton) button;
-                    btn.setPreferredSize(new Dimension(140, 140));
-                    btn.setBackground(Color.decode("#5271FF"));
-                    btn.setForeground(Color.WHITE);
-                    btn.setFont(btn.getFont().deriveFont(Font.BOLD));
-                }
+        JPanel headerPanel = new JPanel() {
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.setColor(Color.decode("#FF8210"));
+                g.fillRect(0, 0, getWidth(), headerHeight);
             }
+        };
+        headerPanel.setPreferredSize(new Dimension(getWidth(), headerHeight));
 
-            //Espaço para centralizar o layout no meio
-            JPanel topSpacePanel = new JPanel();
-            topSpacePanel.setPreferredSize(new Dimension(10, 30)); // Espaço de 30 pixels na parte superior
+        JLabel titleLabel = new JLabel("0001 - Ecoville Park");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 30));
+        titleLabel.setForeground(Color.BLACK); // Cor preta
+        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        titlePanel.add(titleLabel);
 
-            JPanel bottomSpacePanel = new JPanel();
-            bottomSpacePanel.setPreferredSize(new Dimension(10, 30)); // Espaço de 30 pixels na parte inferior
+        JPanel buttonPanel = new JPanel(new GridLayout(2, etapas.getNumeroDeEtapas() / 2, 10, 10));
 
+        LinkedHashMap<String, String> etapasMap = new LinkedHashMap<>(etapas.getEtapas());
 
-            JPanel contentPanel = new JPanel();
-            contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-            contentPanel.add(headerPanel); // Adicione a barra laranja no topo
-            contentPanel.add(topSpacePanel);
-            contentPanel.add(titlePanel); // Adicione o título centralizado
-            contentPanel.add(buttonPanel);
-            contentPanel.add(bottomSpacePanel);
-
-            //Ajuste da faixa laranja no topo da tela
-            this.addComponentListener(new ComponentAdapter() {
-                @Override
-                public void componentResized(ComponentEvent e) {
-                    headerPanel.setPreferredSize(new Dimension(getWidth(), headerHeight));
-                    headerPanel.revalidate();
+        for (Map.Entry<String, String> entry : etapasMap.entrySet()) {
+            JButton btn = new JButton(entry.getKey()); // Usar o nome da chave como texto do botão
+            btn.setPreferredSize(new Dimension(140, 140));
+            btn.setBackground(Color.decode("#5271FF"));
+            btn.setForeground(Color.WHITE);
+            btn.setFont(btn.getFont().deriveFont(Font.BOLD));
+            btn.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    // Atualize a etapa atual para a etapa selecionada
+                    etapas.setEtapaAtual(entry.getKey()); // Usar o nome da chave selecionada
+                    // Atualize a descrição da etapa atual
+                    descricaoEtapaLabel.setText(entry.getValue());
                 }
             });
-
-
-            add(contentPanel);
-
-            pack(); // Ajusta automaticamente o tamanho da janela (fé em deus, mão na bíblia)
-            setVisible(true);
+            buttonPanel.add(btn);
         }
 
-        public static void main(String[] args) {
-            SwingUtilities.invokeLater(() -> {
-                new TelaDoColaborador();
-            });
-        }
+        JPanel topSpacePanel = new JPanel();
+        topSpacePanel.setPreferredSize(new Dimension(10, 30));
+
+        JPanel bottomSpacePanel = new JPanel();
+        bottomSpacePanel.setPreferredSize(new Dimension(10, 30));
+
+        listaEtapas = new JList<>(etapas.getEtapas().keySet().toArray(new String[0]));
+        JScrollPane listaScrollPane = new JScrollPane(listaEtapas);
+
+        descricaoEtapaLabel = new JLabel(etapas.getEtapaAtual());
+        JScrollPane descricaoScrollPane = new JScrollPane(descricaoEtapaLabel);
+
+        // Adicione componentes à contentPanel
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        contentPanel.add(headerPanel);
+        contentPanel.add(topSpacePanel);
+        contentPanel.add(titlePanel);
+        contentPanel.add(buttonPanel);
+        contentPanel.add(listaScrollPane);
+        contentPanel.add(descricaoScrollPane);
+        contentPanel.add(bottomSpacePanel);
+
+        this.addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent e) {
+                headerPanel.setPreferredSize(new Dimension(getWidth(), headerHeight));
+                contentPanel.revalidate(); // Atualize o layout
+            }
+        });
+
+        add(contentPanel);
+
+        pack();
+        setVisible(true);
     }
+}

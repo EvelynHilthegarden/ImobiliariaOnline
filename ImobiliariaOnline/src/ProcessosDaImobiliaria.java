@@ -11,6 +11,9 @@ public class ProcessosDaImobiliaria {
     public void adicionarProcesso(ProcessosDaImobiliaria processo) {
         processos.add(processo);
     }
+    public void excluirProcesso(ProcessosDaImobiliaria processo) {
+        processos.remove(processo);
+    }
 
     public List<ProcessosDaImobiliaria> getProcessos() {
         return processos;

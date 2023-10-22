@@ -1,8 +1,12 @@
-public class Login {
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+class Login {
     private String usuario;
     private String senha;
 
-    public Login(String usuario, String senha){
+    public Login(String usuario, String senha) {
         this.usuario = usuario;
         this.senha = senha;
     }
@@ -22,4 +26,5 @@ public class Login {
     public String getSenha() {
         return senha;
     }
+
 }
